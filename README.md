@@ -1,89 +1,89 @@
-# 🧬 EdgeR Contrast Analysis for miRNA Expression
+### 🧬 EdgeR Contrast Analysis for miRNA Expression
 
-📌 Overview
+## 📌 Overview
 
 This repository contains R scripts for performing differential miRNA expression analysis using the EdgeR package. The analysis compares different patient groups based on miRNA expression levels, using custom contrast matrices for different conditions.
 
-🔬 Methodology
+## 🔬 Methodology
 
-Data Loading & Preprocessing:
+- Data Loading & Preprocessing:
 
-Loads CPM data from Excel files using readxl.
+  - Loads CPM data from Excel files using readxl.
 
-Assumes the first column contains gene/miRNA names.
+  - Assumes the first column contains gene/miRNA names.
 
-Converts the data into a numeric matrix.
+  - Converts the data into a numeric matrix.
 
-Group Assignment:
+- Group Assignment:
 
-Samples categorized into mild vs. severe, moderate vs. severe, and mild-moderate vs. severe groups.
+  - Samples categorized into mild vs. severe, moderate vs. severe, and mild-moderate vs. severe groups.
 
-Mean CPM Calculation:
+- Mean CPM Calculation:
 
-Computes mean CPM values across samples and groups.
+  - Computes mean CPM values across samples and groups.
 
-Calculates log fold change for upregulation/downregulation analysis.
+  - Calculates log fold change for upregulation/downregulation analysis.
 
-EdgeR Differential Expression Analysis:
+- EdgeR Differential Expression Analysis:
 
-Creates a DGEList object.
+  - Creates a DGEList object.
 
-Normalizes data with calcNormFactors.
+  - Normalizes data with calcNormFactors.
 
-Constructs a design matrix.
+  - Constructs a design matrix.
 
-Fits a quasi-likelihood negative binomial generalized log-linear model (glmQLFit).
+  - Fits a quasi-likelihood negative binomial generalized log-linear model (glmQLFit).
 
-Tests for differential expression using qlmQLFTest.
+  - Tests for differential expression using qlmQLFTest.
 
-Result Extraction & Annotation:
+- Result Extraction & Annotation:
 
-Extracts top differentially expressed miRNAs with topTags.
+  - Extracts top differentially expressed miRNAs with topTags.
 
-Computes adjusted p-values (Bonferroni, FDR).
+  - Computes adjusted p-values (Bonferroni, FDR).
 
-Saves results to an Excel file using openxlsx.
+  - Saves results to an Excel file using openxlsx.
 
-📦 Dependencies
+## 📦 Dependencies
 
 Ensure you have the following R libraries installed:
-
+```bash
 install.packages(c("readxl", "tibble", "openxlsx"))
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 BiocManager::install(c("limma", "edgeR"))
-
-🛠️ Usage
+```
+## 🛠️ Usage
 
 1️⃣ Clone this repository:
-
+```bash
 git clone https://github.com/claudiacastrillon/EdgeR_Contrast_Analysis.git
-
+```
 2️⃣ Navigate to the project folder:
-
+```bash
 cd EdgeR_Contrast_Analysis
-
+```
 3️⃣ Run one of the R scripts:
-
+```bash
 source("contrastmildvsmoderate.r")
 source("contrastmildvssevere.r")
 source("contrastmildmodvssevere.r")
+```
+## 📊 Output
 
-📊 Output
+- Excel files with processed miRNA expression contrasts.
 
-Excel files with processed miRNA expression contrasts.
+- Tables of fold changes, log fold changes, and adjusted p-values.
 
-Tables of fold changes, log fold changes, and adjusted p-values.
+- Clustered differential expression analysis based on custom contrasts.
 
-Clustered differential expression analysis based on custom contrasts.
-
-🤝 Contributions
+## 🤝 Contributions
 
 Feel free to contribute by submitting pull requests or reporting issues!
 
-📜 License
+## 📜 License
 
 This project is open-source. See LICENSE for details.
 
-📩 Contact
+## 📩 Contact
 
 For inquiries, contact claudiacastrillon via GitHub. 💡
